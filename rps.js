@@ -12,9 +12,9 @@ function uppercaseFirst (word) {
       else if (playerSelection === 'Rock') {
       switch(computerSelection) {
     case 'Paper':
-      return ('You lose! Paper beats Rock.')
+      return ('You lose! Paper beats Rock.');
     case 'Scissors':
-      return ('You win! Rock beats Scissors')
+      return ('You win! Rock beats Scissors');
     default:
       return 0;
       } 
@@ -22,9 +22,9 @@ function uppercaseFirst (word) {
     else if (playerSelection === 'Paper') {
       switch(computerSelection) {
     case 'Rock':
-      return ('You win! Paper beats Rock.')
+      return ('You win! Paper beats Rock.');
     case 'Scissors':
-      return ('You lose! Scissors beats Paper')
+      return ('You lose! Scissors beats Paper');
     default:
       return 0;
       } 
@@ -32,9 +32,9 @@ function uppercaseFirst (word) {
     else if (playerSelection === 'Scissors') {
       switch(computerSelection) {
     case 'Paper':
-      return ('You win! Scissors beats Paper.')
+      return ('You win! Scissors beats Paper.');
     case 'Rock':
-      return ('You lose! Rock beats Scissors')
+      return ('You lose! Rock beats Scissors');
     default:
       return 0;
       } 
@@ -49,7 +49,33 @@ function uppercaseFirst (word) {
     const randomChoice = choices[Math.floor(Math.random() * choices.length)];
     return randomChoice;
   }
-   
-  const playerSelection = prompt("Please enter either Rock, Paper, or Scissors as your choice: ");
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+
+  function playGame(){
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+      const playerSelection = prompt("Please enter either Rock, Paper, or Scissors as your choice: ");
+      const computerSelection = getComputerChoice();
+      const result = playRound(playerSelection, computerSelection);
+      switch (true) {
+        case result.includes('win'):
+          playerScore += 1;
+          break;
+        case result.includes('lose'):
+          computerScore += 1;
+          break;
+        default:
+          break;
+        }
+      }
+      console.log(playerScore);
+      if (playerScore === computerScore) {
+        console.log(`It's a tie! You both got a score of ${playerScore}.`)
+      } else if (playerScore > computerScore) {
+        console.log(`You won with a score of ${playerScore} vs. ${computerScore}! Congrats!`)
+      } else {
+        console.log(`You lost with a score of ${playerScore} vs. ${computerScore}! Better luck next time!`)
+      }  
+   }
+  
+  playGame();
