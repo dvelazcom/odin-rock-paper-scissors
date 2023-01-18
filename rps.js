@@ -58,7 +58,7 @@ function uppercaseFirst (word) {
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
     const pScore = document.querySelector('#player');
-    const cScore = document.querySelector('#computer'); 
+    const cScore = document.querySelector('#computer');
       switch (true) {
         case result.includes('win'):
           playerScore += 1;
@@ -71,35 +71,21 @@ function uppercaseFirst (word) {
         default:
           break;
         }
+    if (playerScore === 5) {
+      setTimeout(() => {alert('Game Over, You Win!')}, 0);
+      playerScore = 0;
+      computerScore = 0;
+      pScore.textContent = `Player: ${playerScore}`;
+      cScore.textContent = `Computer: ${computerScore}`;
+    }
+    else if (computerScore === 5) {
+      setTimeout(() => {alert('Game Over, Compter Wins!')}, 0);
+      playerScore = 0;
+      computerScore = 0;
+      pScore.textContent = `Player: ${playerScore}`;
+      cScore.textContent = `Computer: ${computerScore}`;
+    }
   }
-
-  // function playGame(playerChoice){
-  //   let playerScore = 0;
-  //   let computerScore = 0;
-  //   for (let i = 0; i < 5; i++) {
-  //     const playerSelection = prompt("Please enter either Rock, Paper, or Scissors as your choice: ");
-  //     const computerSelection = getComputerChoice();
-  //     const result = playRound(playerSelection, computerSelection);
-  //     switch (true) {
-  //       case result.includes('win'):
-  //         playerScore += 1;
-  //         break;
-  //       case result.includes('lose'):
-  //         computerScore += 1;
-  //         break;
-  //       default:
-  //         break;
-  //       }
-  //     }
-  //     console.log(playerScore);
-  //     if (playerScore === computerScore) {
-  //       console.log(`It's a tie! You both got a score of ${playerScore}.`)
-  //     } else if (playerScore > computerScore) {
-  //       console.log(`You won with a score of ${playerScore} vs. ${computerScore}! Congrats!`)
-  //     } else {
-  //       console.log(`You lost with a score of ${playerScore} vs. ${computerScore}! Better luck next time!`)
-  //     }  
-  //  }
   
 const buttons = document.querySelectorAll('button');
 
