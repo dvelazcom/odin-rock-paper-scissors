@@ -50,42 +50,61 @@ function uppercaseFirst (word) {
     return randomChoice;
   }
 
-  function playGame(playerChoice){
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-      const playerSelection = prompt("Please enter either Rock, Paper, or Scissors as your choice: ");
-      const computerSelection = getComputerChoice();
-      const result = playRound(playerSelection, computerSelection);
+  playerScore = 0;
+  computerScore = 0;
+
+  function playGameNew(playerChoice){
+    const playerSelection = playerChoice;
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    const pScore = document.querySelector('#player');
+    const cScore = document.querySelector('#computer'); 
       switch (true) {
         case result.includes('win'):
           playerScore += 1;
+          pScore.textContent = `Player: ${playerScore}`;
           break;
         case result.includes('lose'):
           computerScore += 1;
+          cScore.textContent = `Computer: ${computerScore}`;
           break;
         default:
           break;
         }
-      }
-      console.log(playerScore);
-      if (playerScore === computerScore) {
-        console.log(`It's a tie! You both got a score of ${playerScore}.`)
-      } else if (playerScore > computerScore) {
-        console.log(`You won with a score of ${playerScore} vs. ${computerScore}! Congrats!`)
-      } else {
-        console.log(`You lost with a score of ${playerScore} vs. ${computerScore}! Better luck next time!`)
-      }  
-   }
+  }
+
+  // function playGame(playerChoice){
+  //   let playerScore = 0;
+  //   let computerScore = 0;
+  //   for (let i = 0; i < 5; i++) {
+  //     const playerSelection = prompt("Please enter either Rock, Paper, or Scissors as your choice: ");
+  //     const computerSelection = getComputerChoice();
+  //     const result = playRound(playerSelection, computerSelection);
+  //     switch (true) {
+  //       case result.includes('win'):
+  //         playerScore += 1;
+  //         break;
+  //       case result.includes('lose'):
+  //         computerScore += 1;
+  //         break;
+  //       default:
+  //         break;
+  //       }
+  //     }
+  //     console.log(playerScore);
+  //     if (playerScore === computerScore) {
+  //       console.log(`It's a tie! You both got a score of ${playerScore}.`)
+  //     } else if (playerScore > computerScore) {
+  //       console.log(`You won with a score of ${playerScore} vs. ${computerScore}! Congrats!`)
+  //     } else {
+  //       console.log(`You lost with a score of ${playerScore} vs. ${computerScore}! Better luck next time!`)
+  //     }  
+  //  }
   
-  // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
 
-// we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-
-  // and for each one we add a 'click' listener
   button.addEventListener('click', () => {
-    alert(button.id);
+    playGameNew(button.id);
   });
 });
