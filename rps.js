@@ -50,7 +50,7 @@ function uppercaseFirst (word) {
     return randomChoice;
   }
 
-  function playGame(){
+  function playGame(playerChoice){
     let playerScore = 0;
     let computerScore = 0;
     for (let i = 0; i < 5; i++) {
@@ -78,4 +78,14 @@ function uppercaseFirst (word) {
       }  
    }
   
-  playGame();
+  // buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    alert(button.id);
+  });
+});
